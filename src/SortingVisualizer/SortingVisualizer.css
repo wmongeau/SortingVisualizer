@@ -1,0 +1,15 @@
+.array-container{
+    width: 100%;
+    height: 90%;
+}
+
+.array-bar{
+    width: 2px;
+    background-color: violet;
+    display: inline-block;
+    margin: 0px 1px;
+}
+
+button{
+    margin:10px 10px 10px 10px
+}
