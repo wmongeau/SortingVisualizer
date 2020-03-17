@@ -2,7 +2,7 @@ import React from 'react';
 import './SortingVisualizer.css';
 import {getMergeSortAnimations, getBubbleSortAnimations, getQuickSortAnimations} from '../sortingAlgorithms/sortingAlgorithms';
 
-const ANIMATION_SPEED_MS = 1;
+const ANIMATION_SPEED_MS = 3;
 
 //TODO Add a speed slider
 //TODO Heap sort, insertion sort, selection sort
@@ -73,12 +73,12 @@ export default class SortingVisualizer extends React.Component {
         const animations = getQuickSortAnimations(this.state.array);
         for(let i = 0; i<animations.length; i++){
             const arrayBars = document.getElementsByClassName('array-bar');
-            const isColorChange = i % 3 !== 2;
+            const isColorChange = i % 4 !== 2 && i % 4 !== 3;
             if(isColorChange){
                 const [barOneIndex,barTwoIndex] = animations[i];
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
-                const color = i % 3 === 0 ? 'red' : '#76B3FA';
+                const color = i % 4 === 0 ? 'red' : '#76B3FA';
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;

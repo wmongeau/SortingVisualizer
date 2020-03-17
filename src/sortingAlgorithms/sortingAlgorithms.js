@@ -123,6 +123,9 @@ function partition(array, start, end, animations){
         else{
             animations.push([i,i]);
         }
+        if(i<end-1){
+            animations.push([i,i]);
+        }
     }
     swap(array, pivotIndex, end);
     animations.push([pivotIndex, end]);
