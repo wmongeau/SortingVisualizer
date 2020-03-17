@@ -107,7 +107,6 @@ function quickSort(array, start, end, animations){
     let index = partition(array, start, end, animations);
     quickSort(array, start, index-1, animations);
     quickSort(array, index+1, end, animations);
-    console.log(array);
 }
 
 function partition(array, start, end, animations){
@@ -126,5 +125,6 @@ function partition(array, start, end, animations){
         }
     }
     swap(array, pivotIndex, end);
+    animations.push([pivotIndex, end]);
     return pivotIndex;
 }

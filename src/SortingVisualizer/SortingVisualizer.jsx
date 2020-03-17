@@ -4,6 +4,9 @@ import {getMergeSortAnimations, getBubbleSortAnimations, getQuickSortAnimations}
 
 const ANIMATION_SPEED_MS = 1;
 
+//TODO Add a speed slider
+//TODO Heap sort, insertion sort, selection sort
+
 export default class SortingVisualizer extends React.Component {
     constructor(props){
         super([props]);
