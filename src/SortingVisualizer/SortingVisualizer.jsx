@@ -2,7 +2,7 @@ import React from 'react';
 import './SortingVisualizer.css';
 import {getMergeSortAnimations, getBubbleSortAnimations, getQuickSortAnimations} from '../sortingAlgorithms/sortingAlgorithms';
 
-const ANIMATION_SPEED_MS = 3;
+const ANIMATION_SPEED_MS = 1;
 
 export default class SortingVisualizer extends React.Component {
     constructor(props){
@@ -31,7 +31,7 @@ export default class SortingVisualizer extends React.Component {
 
     resetArray(){
         const array = [];
-        const noBars = Math.floor((0.6*this.state.width)/3);
+        const noBars = Math.floor((0.6*this.state.width)/6);
         const heightBars = Math.floor(0.8*this.state.height);
         for(let i = 0; i<noBars; i++){
             array.push(Math.floor(Math.random()*(heightBars-5+1)+5));
@@ -50,7 +50,7 @@ export default class SortingVisualizer extends React.Component {
                 const [barOneIndex,barTwoIndex] = animations[i];
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
-                const color = i % 3 === 0 ? 'red' : 'violet';
+                const color = i % 3 === 0 ? 'red' : '#76B3FA';
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
@@ -75,7 +75,7 @@ export default class SortingVisualizer extends React.Component {
                 const [barOneIndex,barTwoIndex] = animations[i];
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
-                const color = i % 3 === 0 ? 'red' : 'violet';
+                const color = i % 3 === 0 ? 'red' : '#76B3FA';
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
@@ -108,7 +108,7 @@ export default class SortingVisualizer extends React.Component {
                 const [barOneIndex,barTwoIndex] = animations[i];
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
-                const color = i % 3 === 0 ? 'red' : 'violet';
+                const color = i % 3 === 0 ? 'red' : '#76B3FA';
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
