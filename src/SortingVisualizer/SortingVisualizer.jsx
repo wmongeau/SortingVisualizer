@@ -2,8 +2,18 @@ import React from 'react';
 import './SortingVisualizer.css';
 import {getMergeSortAnimations, getBubbleSortAnimations, getQuickSortAnimations, getHeapSortAnimations, getSelectionSortAnimations, getInsertionSortAnimations} from '../sortingAlgorithms/sortingAlgorithms';
 import { Button } from '@material-ui/core';
+import { MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles';
+import blue from '@material-ui/core/colors/blue'
 import SplitButton from './SplitButton';
 import ContinuousSlider from './ContinuousSlider';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: blue[300]
+        }
+    }
+})
 
 export default class SortingVisualizer extends React.Component {
     constructor(props){
@@ -52,7 +62,7 @@ export default class SortingVisualizer extends React.Component {
                 const [barOneIndex,barTwoIndex] = animations[i];
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
-                const color = i % 3 === 0 ? 'red' : '#76B3FA';
+                const color = i % 3 === 0 ? 'red' : '#64b5f6';
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
@@ -77,7 +87,7 @@ export default class SortingVisualizer extends React.Component {
                 const [barOneIndex,barTwoIndex] = animations[i];
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
-                const color = i % 4 === 0 ? 'red' : '#76B3FA';
+                const color = i % 4 === 0 ? 'red' : '#64b5f6';
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
@@ -107,7 +117,7 @@ export default class SortingVisualizer extends React.Component {
                 const [barOneIndex,barTwoIndex] = animations[i];
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
-                const color = (i % 5 === 0 || i % 5 === 2) ? 'red' : '#76B3FA';
+                const color = (i % 5 === 0 || i % 5 === 2) ? 'red' : '#64b5f6';
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
@@ -136,7 +146,7 @@ export default class SortingVisualizer extends React.Component {
                 const [barOneIndex,barTwoIndex] = animations[i];
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
-                const color = i % 3 === 0 ? 'red' : '#76B3FA';
+                const color = i % 3 === 0 ? 'red' : '#64b5f6';
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
@@ -165,7 +175,7 @@ export default class SortingVisualizer extends React.Component {
                 const [barOneIndex,barTwoIndex] = animations[i];
                 const barOneStyle = arrayBars[barOneIndex].style;
                 const barTwoStyle = arrayBars[barTwoIndex].style;
-                const color = i % 3 === 0 ? 'red' : '#76B3FA';
+                const color = i % 3 === 0 ? 'red' : '#64b5f6';
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
@@ -195,7 +205,7 @@ export default class SortingVisualizer extends React.Component {
                 if(barOneIndex !== -1 && barTwoIndex !== -1){
                     const barOneStyle = arrayBars[barOneIndex].style;
                     const barTwoStyle = arrayBars[barTwoIndex].style;
-                    const color = i % 3 === 0 ? 'red' : '#76B3FA';
+                    const color = i % 3 === 0 ? 'red' : '#64b5f6';
                     setTimeout(() => {
                         barOneStyle.backgroundColor = color;
                         barTwoStyle.backgroundColor = color;
@@ -227,26 +237,28 @@ export default class SortingVisualizer extends React.Component {
     render(){
         const {array} = this.state;
         return(
-            <div className="container">
-                <div className="array-container">
-                    {array.map((val, i) => {
-                        return(
-                            <div className="array-bar" key = {i} style ={{height: `${val}px`}}> </div>
-                        );                    
-                    })}
-                </div>
-                <div className="buttons">
-                    <div className="element">
-                        <Button className="element" variant="contained" onClick={() => this.resetArray()}>Generate a new Array!</Button>
+            <MuiThemeProvider theme={theme}>
+                <div className="container">
+                    <div className="array-container">
+                        {array.map((val, i) => {
+                            return(
+                                <div className="array-bar" key = {i} style ={{height: `${val}px`}}> </div>
+                            );                    
+                        })}
                     </div>
-                    <div className="element">
-                        <SplitButton className="element" quickSort={() => this.quickSort()} mergeSort={() => this.mergeSort()} heapSort={() => this.heapSort()} bubbleSort={() => this.bubbleSort()} selectionSort={() => this.selectionSort()} insertionSort={() => this.insertionSort()}></SplitButton>
-                    </div>
-                    <div className="element">
-                        <ContinuousSlider className="element" changeSpeed={this.changeAnimationSpeed.bind(this)} defaultValue={this.state.speed}/>
-                    </div>
-                </div> 
-            </div>         
+                    <div className="buttons">
+                        <div className="button">
+                            <Button variant="contained" onClick={() => this.resetArray()}>Generate a new Array!</Button>
+                        </div>
+                        <div className="button">
+                            <SplitButton quickSort={() => this.quickSort()} mergeSort={() => this.mergeSort()} heapSort={() => this.heapSort()} bubbleSort={() =>   this.bubbleSort()} selectionSort={() => this.selectionSort()} insertionSort={() => this.insertionSort()}></SplitButton>
+                        </div>
+                        <div className="element">
+                            <ContinuousSlider changeSpeed={this.changeAnimationSpeed.bind(this)} defaultValue={this.state.speed}/>
+                        </div>
+                    </div> 
+                </div>         
+            </MuiThemeProvider>
         );
     }
 }
