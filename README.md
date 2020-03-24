@@ -1,6 +1,5 @@
 ## Sorting Visualizer
-This application was made using react and allows the user to see an animation of different popular sorting algorithms.
-
+This application was made using React and visually sorts a random array using one of the available popular sorting methods.
 ### Included Sorting Methods
 - Merge Sort
 - Quick Sort
